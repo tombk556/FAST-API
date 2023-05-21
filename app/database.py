@@ -6,8 +6,8 @@ from psycopg2.extras import RealDictCursor
 import time
 from .config import settings
 
-SQLALCHEMY_DATABASE_URL = settings.database_uri
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SQLALCHEMY_DATABASE_URL = settings.database_url
+engine = create_engine(SQLALCHEMY_DATABASE_URL.replace("postgres", "postgresql"))
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
